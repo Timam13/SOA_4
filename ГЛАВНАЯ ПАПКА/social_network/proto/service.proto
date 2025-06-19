@@ -1,0 +1,114 @@
+syntax = "proto3";
+package socialnetwork;
+
+service SocialNetwork {
+  // Методы для социальной сети
+  rpc GetPost(GetPostRequest) returns (GetPostResponse);
+  rpc CreateComment(CreateCommentRequest) returns (CreateCommentResponse);
+  rpc GetComments(GetCommentsRequest) returns (GetCommentsResponse);
+  rpc RegisterClient(RegisterClientRequest) returns (RegisterClientResponse);
+  
+  // Методы для платформы программ лояльности
+  rpc GetPromocode(GetPromocodeRequest) returns (GetPromocodeResponse);
+  rpc ClickPromocode(ClickPromocodeRequest) returns (ClickPromocodeResponse);
+  rpc CreatePromocodeComment(CreatePromocodeCommentRequest) returns (CreatePromocodeCommentResponse);
+  rpc GetPromocodeComments(GetPromocodeCommentsRequest) returns (GetPromocodeCommentsResponse);
+}
+
+// Сообщения для социальной сети
+message GetPostRequest { 
+  string client_id = 1; 
+  string post_id = 2; 
+}
+
+message GetPostResponse { 
+  string post_content = 1; 
+}
+
+
+
+message CreateCommentRequest {
+  string client_id = 1;
+  string post_id = 2;
+  string comment_text = 3;
+}
+
+message CreateCommentResponse { 
+  string status = 1; 
+}
+
+message GetCommentsRequest {
+  string post_id = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+}
+
+message Comment {
+  string client_id = 1;
+  string text = 2;
+  string timestamp = 3;
+}
+
+message GetCommentsResponse {
+  repeated Comment comments = 1;
+  int32 total_count = 2;
+  int32 page = 3;
+  int32 page_size = 4;
+}
+
+message RegisterClientRequest {
+  string client_id = 1;
+  string registration_date = 2;
+}
+
+message RegisterClientResponse { 
+  string status = 1; 
+}
+
+// Сообщения для платформы программ лояльности
+message GetPromocodeRequest {
+  string client_id = 1;
+  string promocode_id = 2;
+}
+
+message GetPromocodeResponse {
+  string promocode_content = 1;
+}
+
+message ClickPromocodeRequest {
+  string client_id = 1;
+  string promocode_id = 2;
+}
+
+message ClickPromocodeResponse {
+  string status = 1;
+}
+
+message CreatePromocodeCommentRequest {
+  string client_id = 1;
+  string promocode_id = 2;
+  string comment_text = 3;
+}
+
+message CreatePromocodeCommentResponse {
+  string status = 1;
+}
+
+message GetPromocodeCommentsRequest {
+  string promocode_id = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+}
+
+message PromocodeComment {
+  string client_id = 1;
+  string text = 2;
+  string timestamp = 3;
+}
+
+message GetPromocodeCommentsResponse {
+  repeated PromocodeComment comments = 1;
+  int32 total_count = 2;
+  int32 page = 3;
+  int32 page_size = 4;
+}

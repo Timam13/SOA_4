@@ -1,0 +1,1 @@
+python -m social_network.tests.test_api

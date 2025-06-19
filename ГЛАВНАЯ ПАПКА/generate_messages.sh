@@ -1,0 +1,1 @@
+python -m social_network.tools.generate_kafka_messages --count 20 --interval 0.5

@@ -1,0 +1,6 @@
+flask
+grpcio
+grpcio-tools
+protobuf
+kafka-python
+requests

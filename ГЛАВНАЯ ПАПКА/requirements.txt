@@ -1,0 +1,6 @@
+flask>=2.0
+grpcio>=1.40
+grpcio-tools>=1.40
+protobuf>=3.17
+kafka-python>=2.0
+requests>=2.25
